@@ -2,13 +2,17 @@ package com.gestionate.api.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -48,6 +52,9 @@ public class Usuario implements Serializable{
 	
 	@Column(name = "f_ult_inicio_sesion")
 	private Date f_ult_inicio_sesion;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Ingresos> listaIngresos = new HashSet<>();
 
 	public Usuario(long id, String username, String email, String password, String nombre, String apellido1,
 			String apellido2, String activo, String f_baja, Date f_ult_inicio_sesion) {
