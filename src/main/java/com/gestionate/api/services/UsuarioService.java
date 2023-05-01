@@ -10,4 +10,10 @@ public interface UsuarioService {
 	
 	public List<UsuarioDTO> obtenerTodosUsuarios();
 	
+	public UsuarioDTO obtenerUsuarioById(long id);
+	
+	public UsuarioDTO actualizarUsuario(UsuarioDTO usuario, long id);
+	
+	public void eliminarUsuario(long id);
+	
 }

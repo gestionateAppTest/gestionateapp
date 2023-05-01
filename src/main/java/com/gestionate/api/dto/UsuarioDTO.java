@@ -18,27 +18,6 @@ public class UsuarioDTO {
 	private String f_baja;	
 	private Date f_ult_inicio_sesion;
 	
-	public UsuarioDTO obtenerDeEntidad(Usuario usuario) {
-		
-		UsuarioDTO usuarioDto = null; 
-		
-		if(usuario != null) {
-			usuarioDto = new UsuarioDTO(
-					usuario.getId(), 
-					usuario.getUsername(),
-					usuario.getEmail(),
-					usuario.getPassword(),
-					usuario.getNombre(),
-					usuario.getApellido1(),
-					usuario.getApellido2(),
-					usuario.getActivo(),
-					usuario.getF_baja(),
-					usuario.getF_ult_inicio_sesion());
-		}
-		
-		return usuarioDto;
-	}
-	
 	public Usuario obtenerDeDTO(UsuarioDTO usuario) {
 		
 		Usuario usuarioEntidad = null; 
@@ -58,6 +37,23 @@ public class UsuarioDTO {
 		}
 		
 		return usuarioEntidad;
+	}
+	
+	public UsuarioDTO(Usuario usuario) {
+		super();
+		
+		if(usuario != null) {
+				this.id = usuario.getId(); 
+				this.username = usuario.getUsername();
+				this.email = usuario.getEmail();
+				this.password = usuario.getPassword();
+				this.nombre = usuario.getNombre();
+				this.apellido1 = usuario.getApellido1();
+				this.apellido2 = usuario.getApellido2();
+				this.activo = usuario.getActivo();
+				this.f_baja = usuario.getF_baja();
+				this.f_ult_inicio_sesion = usuario.getF_ult_inicio_sesion();
+		}
 	}
 
 	public UsuarioDTO() {
