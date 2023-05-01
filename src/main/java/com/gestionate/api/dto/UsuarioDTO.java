@@ -3,58 +3,36 @@ package com.gestionate.api.dto;
 import java.sql.Date;
 import java.util.Objects;
 
-import com.gestionate.api.entities.Usuario;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 
 public class UsuarioDTO {
 
 	private long id;
+	
+	@NotEmpty
 	private String username;
+	
+	@NotEmpty
+	@Email
 	private String email;
+
+	@NotEmpty
 	private String password;
+	
+	@NotEmpty
 	private String nombre;
+	
+	@NotEmpty
 	private String apellido1;
+	
 	private String apellido2;
+	
 	private String activo;
+	
 	private String f_baja;	
+	
 	private Date f_ult_inicio_sesion;
-	
-	public Usuario obtenerDeDTO(UsuarioDTO usuario) {
-		
-		Usuario usuarioEntidad = null; 
-		
-		if(usuario != null) {
-			usuarioEntidad = new Usuario(
-					usuario.getId(), 
-					usuario.getUsername(),
-					usuario.getEmail(),
-					usuario.getPassword(),
-					usuario.getNombre(),
-					usuario.getApellido1(),
-					usuario.getApellido2(),
-					usuario.getActivo(),
-					usuario.getF_baja(),
-					usuario.getF_ult_inicio_sesion());
-		}
-		
-		return usuarioEntidad;
-	}
-	
-	public UsuarioDTO(Usuario usuario) {
-		super();
-		
-		if(usuario != null) {
-				this.id = usuario.getId(); 
-				this.username = usuario.getUsername();
-				this.email = usuario.getEmail();
-				this.password = usuario.getPassword();
-				this.nombre = usuario.getNombre();
-				this.apellido1 = usuario.getApellido1();
-				this.apellido2 = usuario.getApellido2();
-				this.activo = usuario.getActivo();
-				this.f_baja = usuario.getF_baja();
-				this.f_ult_inicio_sesion = usuario.getF_ult_inicio_sesion();
-		}
-	}
 
 	public UsuarioDTO() {
 		super();

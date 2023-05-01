@@ -3,37 +3,24 @@ package com.gestionate.api.dto;
 import java.util.Date;
 import java.util.Objects;
 
-import com.gestionate.api.entities.Ingresos;
+import org.springframework.format.annotation.NumberFormat;
+
+import jakarta.validation.constraints.NotEmpty;
 
 
 public class IngresoDTO {
 	
 	private long id;
+	
+	@NotEmpty
 	private Date fecha_ingreso;
+	
+	@NotEmpty
+	@NumberFormat
 	private double cantidad;
+	
+	@NotEmpty
 	private String descripcion;
-	
-	public Ingresos obtenerDeDTO(IngresoDTO ingreso) {
-		
-		Ingresos ingresoEntidad = null; 
-		
-		if(ingreso != null) {
-			ingresoEntidad = new Ingresos(ingreso.getId(),ingreso.getFecha_ingreso(),ingreso.getCantidad(),ingreso.getDescripcion());
-		}
-		
-		return ingresoEntidad;
-	}
-	
-	public IngresoDTO(Ingresos ingreso) {
-		super();
-		
-		if(ingreso != null) {
-			this.id = ingreso.getId();
-			this.fecha_ingreso = ingreso.getFecha_ingreso();
-			this.cantidad = ingreso.getCantidad();
-			this.descripcion = ingreso.getDescripcion();
-		}
-	}
 	
 	public IngresoDTO() {
 		super();

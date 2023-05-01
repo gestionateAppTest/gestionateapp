@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gestionate.api.dto.UsuarioDTO;
 import com.gestionate.api.services.UsuarioService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("api/usuario")
 public class UsuarioController {
@@ -30,7 +32,10 @@ public class UsuarioController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<UsuarioDTO> guardarUsuario(@RequestBody UsuarioDTO usuario){
+	public ResponseEntity<UsuarioDTO> guardarUsuario(
+			@Valid 
+			@RequestBody UsuarioDTO usuario){
+		
 		return new ResponseEntity<>(usuarioService.crearUsuario(usuario), HttpStatus.CREATED);
 	};
 	
@@ -40,7 +45,11 @@ public class UsuarioController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<UsuarioDTO> actualizarUsuario(@RequestBody UsuarioDTO usuarioDTO, @PathVariable(name = "id") long id ){
+	public ResponseEntity<UsuarioDTO> actualizarUsuario(
+			@Valid 
+			@RequestBody UsuarioDTO usuarioDTO, 
+			@PathVariable(name = "id") long id ){
+		
 		UsuarioDTO usuarioRespuesta = usuarioService.actualizarUsuario(usuarioDTO, id);
 		return new ResponseEntity<>(usuarioRespuesta, HttpStatus.OK);
 	}

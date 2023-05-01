@@ -12,4 +12,8 @@ public interface IngresoService {
 	
 	public IngresoDTO obtenerIngresoPorId(long usuarioId, long ingresoId);
 	
+	public IngresoDTO actualizarIngreso(long usuarioId,long ingresoId, IngresoDTO ingreso);
+	
+	public void eliminarIngreso(long usuarioId,long ingresoId);
+	
 }
